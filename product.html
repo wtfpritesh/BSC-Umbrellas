@@ -70,13 +70,18 @@
     .masthead-title { font-family: var(--serif); font-weight: 500; font-variation-settings: 'opsz' 144, 'SOFT' 50, 'WONK' 1; font-size: clamp(1.8rem, 3.4vw, 3rem); letter-spacing: -0.02em; line-height: 1; text-align: center; color: var(--bsc-amber); margin: 0; }
     .masthead-title em { font-style: italic; color: var(--bsc-amber); font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1; }
     .masthead-deva { font-family: var(--deva); font-style: italic; font-size: 0.95rem; color: var(--bsc-amber-deep); letter-spacing: 0.02em; line-height: 1; }
+    @media (max-width: 720px) {
+      .masthead .container { grid-template-columns: 1fr; text-align: center; }
+      .masthead-left, .masthead-right { text-align: center; }
+    }
 
-    nav.primary { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 1px solid var(--rule); padding: 16px 0; backdrop-filter: blur(8px); }
-    nav.primary .container { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
-    .nav-mark { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 12px; }
-    .nav-mark::before { content: ''; width: 22px; height: 22px; background: var(--bsc-amber); clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%); display: inline-block; }
-    .nav-links { display: flex; gap: 36px; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { color: var(--ink); transition: color 0.2s; padding: 6px 0; }
+    /* Sticky nav — matches index.html */
+    nav.primary { position: sticky; top: 0; z-index: 50; background: rgba(242,234,218,0.92); border-bottom: 1px solid var(--rule); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+    nav.primary .container { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; padding-bottom: 12px; gap: 16px; flex-wrap: wrap; }
+    .nav-mark { font-family: var(--serif); font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+    .nav-mark::before { content: ''; width: 22px; height: 22px; background: var(--bsc-amber); clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); display: inline-block; flex-shrink: 0; }
+    .nav-links { display: flex; gap: clamp(14px, 2vw, 28px); font-size: 0.82rem; letter-spacing: 0.16em; text-transform: uppercase; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; color: var(--ink-soft); }
+    .nav-links a { color: var(--ink); transition: color 0.2s; padding: 6px 0; position: relative; }
     .nav-links a:hover { color: var(--rust); }
     .nav-links a.active { color: var(--rust); border-bottom: 1px solid var(--rust); }
     @media (max-width: 560px) {
