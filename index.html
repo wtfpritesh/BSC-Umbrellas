@@ -818,6 +818,230 @@
       font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
     }
 
+    /* ============ FEATURED PRODUCTS CAROUSEL ============ */
+    .featured-products .section-title .title-link {
+      color: inherit;
+      text-decoration: none;
+      display: inline;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .featured-products .section-title .title-link:hover { color: var(--rust); }
+    .featured-products .section-title .title-arrow {
+      display: inline-block;
+      margin-left: 0.18em;
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--rust);
+      font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+      transition: transform 0.3s ease;
+      vertical-align: baseline;
+    }
+    .featured-products .section-title .title-link:hover .title-arrow {
+      transform: translateX(8px);
+    }
+
+    .carousel-wrap {
+      position: relative;
+      display: grid;
+      grid-template-columns: 48px 1fr 48px;
+      gap: clamp(10px, 1.6vw, 22px);
+      align-items: stretch;
+    }
+    @media (max-width: 720px) {
+      .carousel-wrap { grid-template-columns: 1fr; }
+    }
+
+    .carousel-btn {
+      width: 48px;
+      height: 48px;
+      align-self: center;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+      font-family: inherit;
+    }
+    .carousel-btn svg { width: 16px; height: 16px; display: block; }
+    .carousel-btn:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+    .carousel-btn:focus-visible {
+      outline: 2px solid var(--rust);
+      outline-offset: 3px;
+    }
+    @media (max-width: 720px) {
+      .carousel-btn { display: none; }
+    }
+
+    .carousel-viewport {
+      overflow: hidden;
+      position: relative;
+      min-width: 0;
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: clamp(20px, 2.5vw, 36px);
+      transition: transform 0.7s cubic-bezier(0.65, 0.05, 0.36, 1);
+      will-change: transform;
+    }
+    .carousel-track.no-transition { transition: none !important; }
+
+    .featured-card {
+      flex: 0 0 calc((100% - 2 * clamp(20px, 2.5vw, 36px)) / 3);
+      display: flex;
+      flex-direction: column;
+      background: var(--paper-light);
+      border: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+      min-width: 0;
+    }
+    .featured-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px -20px rgba(20,17,13,0.18);
+      border-color: rgba(20,17,13,0.32);
+    }
+    @media (max-width: 1080px) {
+      .featured-card {
+        flex: 0 0 calc((100% - clamp(20px, 2.5vw, 36px)) / 2);
+      }
+    }
+    @media (max-width: 720px) {
+      .featured-card { flex: 0 0 100%; }
+    }
+
+    .featured-card-image {
+      aspect-ratio: 1;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .featured-card-image img {
+      width: 80%;
+      height: 80%;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+    }
+    .featured-card:hover .featured-card-image img { transform: scale(1.04); }
+
+    .featured-card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 18px 0;
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-mute);
+    }
+    .featured-card-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 500;
+      color: var(--tv-red);
+    }
+    .featured-card-chip::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--tv-red);
+      display: inline-block;
+    }
+    .featured-card-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      margin: 12px 18px 8px;
+      font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+      color: var(--ink);
+    }
+    .featured-card-desc {
+      font-size: 0.82rem;
+      color: var(--ink-mute);
+      margin: 0 18px 18px;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+    .featured-card-cta {
+      padding: 14px 18px;
+      border-top: 1px solid var(--rule);
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .featured-card:hover .featured-card-cta { color: var(--ink); }
+    .featured-card-cta-arrow { transition: transform 0.3s; }
+    .featured-card:hover .featured-card-cta-arrow { transform: translateX(4px); }
+
+    .carousel-dots {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 36px;
+    }
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(20,17,13,0.18);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease, width 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .carousel-dot:hover { background: rgba(20,17,13,0.4); }
+    .carousel-dot.active {
+      background: var(--rust);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .carousel-foot {
+      grid-column: 1 / -1;
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+    }
+    .carousel-all-link {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      padding: 12px 22px;
+      border: 1px solid var(--rule);
+      transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    .carousel-all-link:hover {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
     /* ============ FOOTER ============ */
     footer.bottom {
       background: var(--ink);
@@ -1362,10 +1586,146 @@
       </div>
     </section>
 
-    <section class="section" id="brands">
+    <section class="section featured-products" id="featured-products">
       <div class="container">
         <div class="section-head reveal">
           <div class="section-num">№ 02</div>
+          <div>
+            <span class="section-kicker">From the Catalogue</span>
+            <h2 class="section-title">
+              <a href="products.html" class="title-link">Featured <span class="ital">products.</span><span class="title-arrow" aria-hidden="true">&rarr;</span></a>
+            </h2>
+          </div>
+        </div>
+
+        <div class="carousel-wrap reveal d1">
+          <button class="carousel-btn prev" type="button" aria-label="Previous product">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 6 L9 12 L15 18"/>
+            </svg>
+          </button>
+
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="featured-track">
+
+              <a href="product.html?id=26-X-12-BLACK-SILVER-SANDOO-JALI-IRON-HANDLE-TV" class="featured-card">
+                <div class="featured-card-image">
+                  <img src="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777976870/IMG_20210916_014010_tiy0qp.jpg" alt="26 X 12 TAIWAN BLACK SILVER SANDOO JALI IRON HANDLE" loading="lazy" />
+                </div>
+                <div class="featured-card-meta">
+                  <span class="featured-card-chip">T.V. Brand</span>
+                  <span>Umbrellas</span>
+                </div>
+                <h3 class="featured-card-name">26 X 12 Taiwan Black Silver Sandoo Jali Iron Handle</h3>
+                <p class="featured-card-desc">26-inch canopy, 12-rib frame &mdash; black-silver finish, classic iron handle.</p>
+                <div class="featured-card-cta">
+                  <span>View &amp; Enquire</span>
+                  <span class="featured-card-cta-arrow">&rarr;</span>
+                </div>
+              </a>
+
+              <a href="product.html?id=26-X-12-BLACK-SILVER-PIPING-SANDOO-JALI-IRON-HANDLE-TV" class="featured-card">
+                <div class="featured-card-image">
+                  <img src="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777979164/IMG_20210916_003642_pbptr9.jpg" alt="26 X 12 TAIWAN BLACK SILVER PIPING SANDOO JALI IRON HANDLE" loading="lazy" />
+                </div>
+                <div class="featured-card-meta">
+                  <span class="featured-card-chip">T.V. Brand</span>
+                  <span>Umbrellas</span>
+                </div>
+                <h3 class="featured-card-name">26 X 12 Taiwan Black Silver Piping Sandoo Jali Iron Handle</h3>
+                <p class="featured-card-desc">Piping detail with Sandoo Jali on a 26-inch, 12-rib build &mdash; black-silver.</p>
+                <div class="featured-card-cta">
+                  <span>View &amp; Enquire</span>
+                  <span class="featured-card-cta-arrow">&rarr;</span>
+                </div>
+              </a>
+
+              <a href="product.html?id=26-X-12-MILITARY-SATIN-BLACK-SANDOO-JALI-IRON-HANDLE-TV" class="featured-card">
+                <div class="featured-card-image">
+                  <img src="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777979339/IMG_20210916_020119_dvheoe.jpg" alt="26 X 12 TAIWAN MILITARY SATIN BLACK SANDOO JALI IRON HANDLE" loading="lazy" />
+                </div>
+                <div class="featured-card-meta">
+                  <span class="featured-card-chip">T.V. Brand</span>
+                  <span>Umbrellas</span>
+                </div>
+                <h3 class="featured-card-name">26 X 12 Taiwan Military Satin Black Sandoo Jali Iron Handle</h3>
+                <p class="featured-card-desc">Military satin black on a 26-inch, 12-rib frame &mdash; quiet, considered.</p>
+                <div class="featured-card-cta">
+                  <span>View &amp; Enquire</span>
+                  <span class="featured-card-cta-arrow">&rarr;</span>
+                </div>
+              </a>
+
+              <a href="product.html?id=21.5-X-8-3-FOLD-PIPING-SANDOO-JALI-TV" class="featured-card">
+                <div class="featured-card-image">
+                  <img src="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777970679/IMG_20220529_191413_trrkfl.jpg" alt="21.5 X 8 TAIWAN BLACK SILVER PIPING SANDOO JALI 3 FOLD" loading="lazy" />
+                </div>
+                <div class="featured-card-meta">
+                  <span class="featured-card-chip">T.V. Brand</span>
+                  <span>Umbrellas</span>
+                </div>
+                <h3 class="featured-card-name">21.5 X 8 Taiwan Black Silver Piping Sandoo Jali 3 Fold</h3>
+                <p class="featured-card-desc">Compact 3-fold travel piece &mdash; piping, Sandoo Jali, in black-silver.</p>
+                <div class="featured-card-cta">
+                  <span>View &amp; Enquire</span>
+                  <span class="featured-card-cta-arrow">&rarr;</span>
+                </div>
+              </a>
+
+              <a href="product.html?id=21.5-X-8-3-FOLD-AUTO-MONO-TV" class="featured-card">
+                <div class="featured-card-image">
+                  <img src="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777971058/IMG_20220529_194313_nckh5n.jpg" alt="21.5 X 8 TAIWAN MONO SILVER 3 FOLD AUTO" loading="lazy" />
+                </div>
+                <div class="featured-card-meta">
+                  <span class="featured-card-chip">T.V. Brand</span>
+                  <span>Umbrellas</span>
+                </div>
+                <h3 class="featured-card-name">21.5 X 8 Taiwan Mono Silver 3 Fold Auto</h3>
+                <p class="featured-card-desc">3-fold auto-open, 21.5-inch, 8-rib &mdash; mono silver finish, everyday-carry.</p>
+                <div class="featured-card-cta">
+                  <span>View &amp; Enquire</span>
+                  <span class="featured-card-cta-arrow">&rarr;</span>
+                </div>
+              </a>
+
+              <a href="product.html?id=26-X-12-SATIN-PRINT-SANDOO-JALI-IRON-HANDLE-TV" class="featured-card">
+                <div class="featured-card-image">
+                  <img src="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777979443/IMG_20220529_185857_zdukgs.jpg" alt="26 X 12 TAIWAN SATIN PRINT SANDOO JALI IRON HANDLE" loading="lazy" />
+                </div>
+                <div class="featured-card-meta">
+                  <span class="featured-card-chip">T.V. Brand</span>
+                  <span>Umbrellas</span>
+                </div>
+                <h3 class="featured-card-name">26 X 12 Taiwan Satin Print Sandoo Jali Iron Handle</h3>
+                <p class="featured-card-desc">Satin print canopy on a 26-inch, 12-rib build &mdash; with iron handle.</p>
+                <div class="featured-card-cta">
+                  <span>View &amp; Enquire</span>
+                  <span class="featured-card-cta-arrow">&rarr;</span>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <button class="carousel-btn next" type="button" aria-label="Next product">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 6 L15 12 L9 18"/>
+            </svg>
+          </button>
+
+          <div class="carousel-dots" id="featured-dots" role="tablist" aria-label="Product carousel"></div>
+
+          <div class="carousel-foot">
+            <a href="products.html" class="carousel-all-link">View all products &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="brands">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-num">№ 03</div>
           <div>
             <span class="section-kicker">Our Brands</span>
             <h2 class="section-title">Three brands. <span class="ital">One House.</span></h2>
@@ -1441,7 +1801,7 @@
     <section class="section heritage" id="heritage">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-num">№ 03</div>
+          <div class="section-num">№ 04</div>
           <div>
             <span class="section-kicker">Heritage</span>
             <h2 class="section-title">Seventy-six monsoons <span class="ital">and counting.</span></h2>
@@ -1467,7 +1827,7 @@
 
         <!-- Lineage timeline -->
         <div class="timeline-block reveal">
-          <div class="tl-overline">№ 03 &mdash; A Lineage of Rainwear</div>
+          <div class="tl-overline">№ 04 &mdash; A Lineage of Rainwear</div>
           <h3 class="tl-title">From <em>1949</em> to today.</h3>
 
           <div class="tl-track" aria-hidden="true">
@@ -1503,7 +1863,7 @@
     <section class="section contact" id="contact">
       <div class="container">
         <div class="section-head reveal">
-          <div class="section-num">№ 04</div>
+          <div class="section-num">№ 05</div>
           <div>
             <span class="section-kicker">Get in Touch</span>
             <h2 class="section-title">One door. <span class="ital">All three brands.</span></h2>
@@ -1632,6 +1992,227 @@
     requestAnimationFrame(() => {
       document.querySelectorAll('.hero .reveal').forEach(r => r.classList.add('in'));
     });
+
+    /* ============ FEATURED PRODUCTS CAROUSEL ============ */
+    (function initFeaturedCarousel() {
+      const track = document.getElementById('featured-track');
+      const wrap  = document.querySelector('.featured-products .carousel-wrap');
+      const prevBtn = document.querySelector('.featured-products .carousel-btn.prev');
+      const nextBtn = document.querySelector('.featured-products .carousel-btn.next');
+      const dotsEl = document.getElementById('featured-dots');
+      if (!track || !wrap) return;
+
+      const originalCards = Array.from(track.children);
+      const total = originalCards.length;
+      if (total === 0) return;
+
+      let visible = computeVisible();
+      let index = visible;          // pointer into the live track (which has clones at start)
+      let isAnimating = false;
+      let autoplayId = null;
+      const AUTOPLAY_MS = 4500;
+
+      function computeVisible() {
+        const w = window.innerWidth;
+        if (w <= 720)  return 1;
+        if (w <= 1080) return 2;
+        return 3;
+      }
+
+      function buildClones() {
+        // Remove any prior clones
+        track.querySelectorAll('.is-clone').forEach(c => c.remove());
+
+        // Prepend last `visible` items as clones (so prev wraps cleanly)
+        const tail = originalCards.slice(-visible);
+        // insert in reverse order so original order is preserved at the start
+        for (let i = tail.length - 1; i >= 0; i--) {
+          const c = tail[i].cloneNode(true);
+          c.classList.add('is-clone');
+          c.setAttribute('aria-hidden', 'true');
+          c.setAttribute('tabindex', '-1');
+          track.insertBefore(c, track.firstChild);
+        }
+        // Append first `visible` items as clones (so next wraps cleanly)
+        originalCards.slice(0, visible).forEach(el => {
+          const c = el.cloneNode(true);
+          c.classList.add('is-clone');
+          c.setAttribute('aria-hidden', 'true');
+          c.setAttribute('tabindex', '-1');
+          track.appendChild(c);
+        });
+      }
+
+      function getStep() {
+        const firstCard = track.children[0];
+        if (!firstCard) return 0;
+        const rect = firstCard.getBoundingClientRect();
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || 0) || 0;
+        return rect.width + gap;
+      }
+
+      function applyTransform(animate) {
+        if (!animate) {
+          track.classList.add('no-transition');
+        }
+        track.style.transform = `translate3d(${-index * getStep()}px, 0, 0)`;
+        if (!animate) {
+          // Force reflow then re-enable transition
+          void track.offsetHeight;
+          track.classList.remove('no-transition');
+        }
+      }
+
+      function realIndex() {
+        // Map track index -> original index in 0..total-1
+        return ((index - visible) % total + total) % total;
+      }
+
+      function buildDots() {
+        if (!dotsEl) return;
+        dotsEl.innerHTML = '';
+        for (let i = 0; i < total; i++) {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-label', `Go to product ${i + 1}`);
+          b.addEventListener('click', () => {
+            if (isAnimating) return;
+            isAnimating = true;
+            index = visible + i;
+            applyTransform(true);
+            restartAutoplay();
+          });
+          dotsEl.appendChild(b);
+        }
+      }
+
+      function updateDots() {
+        if (!dotsEl) return;
+        const r = realIndex();
+        dotsEl.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === r);
+        });
+      }
+
+      function next() {
+        if (isAnimating) return;
+        isAnimating = true;
+        index++;
+        applyTransform(true);
+      }
+
+      function prev() {
+        if (isAnimating) return;
+        isAnimating = true;
+        index--;
+        applyTransform(true);
+      }
+
+      track.addEventListener('transitionend', (e) => {
+        if (e.propertyName !== 'transform') return;
+        // Wrap silently if we've animated into clone territory
+        if (index >= total + visible) {
+          index = visible + (index - (total + visible));
+          applyTransform(false);
+        } else if (index < visible) {
+          index = total + index;
+          applyTransform(false);
+        }
+        isAnimating = false;
+        updateDots();
+      });
+
+      function startAutoplay() {
+        if (autoplayId) return;
+        autoplayId = setInterval(next, AUTOPLAY_MS);
+      }
+      function stopAutoplay() {
+        if (autoplayId) {
+          clearInterval(autoplayId);
+          autoplayId = null;
+        }
+      }
+      function restartAutoplay() {
+        stopAutoplay();
+        startAutoplay();
+      }
+
+      // Buttons
+      if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAutoplay(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { next(); restartAutoplay(); });
+
+      // Pause on hover (desktop)
+      wrap.addEventListener('mouseenter', stopAutoplay);
+      wrap.addEventListener('mouseleave', startAutoplay);
+
+      // Pause when not visible
+      if ('IntersectionObserver' in window) {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) startAutoplay();
+            else stopAutoplay();
+          });
+        }, { threshold: 0.2 });
+        obs.observe(wrap);
+      }
+
+      // Pause on tab hidden, resume on visible
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopAutoplay();
+        else startAutoplay();
+      });
+
+      // Touch swipe support
+      let touchStartX = 0, touchDeltaX = 0, touching = false;
+      track.addEventListener('touchstart', (e) => {
+        if (!e.touches || !e.touches[0]) return;
+        touchStartX = e.touches[0].clientX;
+        touchDeltaX = 0;
+        touching = true;
+        stopAutoplay();
+      }, { passive: true });
+      track.addEventListener('touchmove', (e) => {
+        if (!touching || !e.touches || !e.touches[0]) return;
+        touchDeltaX = e.touches[0].clientX - touchStartX;
+      }, { passive: true });
+      track.addEventListener('touchend', () => {
+        if (!touching) return;
+        touching = false;
+        const threshold = 50;
+        if (touchDeltaX <= -threshold) next();
+        else if (touchDeltaX >= threshold) prev();
+        startAutoplay();
+      });
+
+      // Resize: rebuild clones if visible count changed
+      let resizeT;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeT);
+        resizeT = setTimeout(() => {
+          const newVisible = computeVisible();
+          const realIdx = realIndex();
+          if (newVisible !== visible) {
+            visible = newVisible;
+            buildClones();
+            index = visible + realIdx;
+          }
+          applyTransform(false);
+        }, 150);
+      });
+
+      // Init
+      buildClones();
+      buildDots();
+      // Wait for layout then position
+      requestAnimationFrame(() => {
+        applyTransform(false);
+        updateDots();
+        startAutoplay();
+      });
+    })();
   </script>
 
 </body>
