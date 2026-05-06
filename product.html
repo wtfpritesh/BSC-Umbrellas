@@ -4,7 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Product &middot; BSC Umbrellas</title>
-  <meta name="description" content="Product details and enquiry from BSC Umbrellas." />
+  <meta name="description" content="A single product from the BSC Umbrellas catalogue — heritage umbrellas, raincoats, ponchos and garden umbrellas made in India since 1949. Enquire on WhatsApp." />
+  <meta name="author" content="BSC Umbrellas" />
+
+  <link rel="canonical" id="canonical-link" href="https://bscumbrellas.in/product.html" />
+
+  <meta property="og:type" content="product" />
+  <meta property="og:title" content="Product · BSC Umbrellas" />
+  <meta property="og:description" content="A single product from the BSC Umbrellas catalogue — heritage rain essentials made in India since 1949." />
+  <meta property="og:url" content="https://bscumbrellas.in/product.html" />
+  <meta property="og:site_name" content="BSC Umbrellas" />
+  <meta property="og:image" content="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777823914/BSC_Logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Product · BSC Umbrellas" />
+  <meta name="twitter:description" content="A single product from the BSC Umbrellas catalogue — heritage rain essentials made in India since 1949." />
+  <meta name="twitter:image" content="https://res.cloudinary.com/dgiyxtmkl/image/upload/v1777823914/BSC_Logo.png" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#F0A91C" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -364,6 +382,7 @@
       <ul class="nav-links">
         <li><a href="index.html#categories">Categories</a></li>
         <li><a href="index.html#brands">Brands</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="index.html#heritage">Heritage</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
@@ -388,6 +407,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#categories">Categories</a></li>
             <li><a href="index.html#brands">Brands</a></li>
+        <li><a href="about.html">About</a></li>
             <li><a href="products.html">Products</a></li>
             <li><a href="blog.html">Journal</a></li>
             <li><a href="index.html#heritage">Heritage</a></li>
@@ -466,6 +486,11 @@
 
     function renderProduct(p) {
       document.title = `${p.name} · ${p.brand} · BSC Umbrellas`;
+      const canonicalUrl = `https://bscumbrellas.in/product.html?id=${encodeURIComponent(p.id)}`;
+      const canonicalEl = document.getElementById('canonical-link');
+      if (canonicalEl) canonicalEl.href = canonicalUrl;
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
 
       const brandClass = BRAND_CLASSES[p.brand] || 'bsc';
       const allImages = [p.image, ...(p.images || [])].filter(Boolean);
